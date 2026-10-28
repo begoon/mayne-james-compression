@@ -11,6 +11,19 @@ go test -fuzz=FuzzRoundTrip -fuzztime=10s
 go test -run='^$' -bench=. -benchmem -count=3
 ```
 
+With `just` installed, run `just` to list convenience commands:
+
+```sh
+just build                         # Build bin/mjc
+just check                         # Formatting, tests, and vet
+just bench                         # Three benchmark samples
+just fuzz 30s                      # Fuzz for 30 seconds
+just compress input.txt /tmp/input.mjc
+just decompress /tmp/input.mjc /tmp/restored.txt
+just sample                        # Regenerate output.txt
+just clean                         # Remove bin/mjc
+```
+
 Input and output must be different files (including hard-link and symlink
 aliases). Output is written to a temporary file in the destination directory
 and renamed into place only after successful processing and close. A failure
